@@ -81,7 +81,7 @@ def ResetHeatmapYOLOFolder(data_dir, train_ratio=0.8):
                 
 # ====================== 2. Dataset (YOLO 標註 → Heatmap) ======================
 class HeatmapYOLODataset(Dataset):
-    def __init__(self, data_dir, sigma=10, input_size=512, phase='train'):
+    def __init__(self, data_dir, stride: int = 4, sigma=10, input_size=512, phase='train'):
         #self.img_dir = img_dir
         #self.label_dir = label_dir
         self.data_dir = data_dir
@@ -122,8 +122,7 @@ class HeatmapYOLODataset(Dataset):
                 if name.lower().endswith(('.jpg', '.png', '.jpeg')):
                     self.img_paths .append(folder+'/'+name)
                     
-        print(str(len(self.img_paths)))
-        
+        print(phase+":"+str(len(self.img_paths)))
         '''    
         self.img_paths = sorted([
             os.path.join(img_dir, f) for f in os.listdir(img_dir)

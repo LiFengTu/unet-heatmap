@@ -1,10 +1,11 @@
 import myDataset
 
-#unetHeatmapYoloDataset.ResetDataFolder('data')
+#myDataset.ResetHeatmapYOLOFolder('data')
+
 dataset = myDataset.HeatmapYOLODataset(
         data_dir="data",
         stride=4,
-        sigma_factor=0.3,
+        sigma=0.3,
         input_size=1024,
         phase='val'
     )
